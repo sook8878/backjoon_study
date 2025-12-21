@@ -10,9 +10,9 @@ public class Main {
 
         StringTokenizer st = new StringTokenizer(str);
 
-        int a = Integer.parseInt(st.nextToken());
-        int b = Integer.parseInt(st.nextToken());
+        int num1 = Integer.parseInt(st.nextToken());
+        int num2 = Integer.parseInt(st.nextToken());
 
-        System.out.println(a- b);
+        System.out.println(num1 * num2);
     }
 }
