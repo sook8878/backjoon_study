@@ -10,13 +10,7 @@ public class Main {
 
         StringTokenizer st = new StringTokenizer(str);
 
-        int num1 = Integer.parseInt(st.nextToken());
-        int num2 = Integer.parseInt(st.nextToken());
-
-        System.out.println(num1 + num2);
-        System.out.println(num1 - num2);
-        System.out.println(num1 * num2);
-        System.out.println(num1 / num2);
-        System.out.println(num1 % num2);
+        String id = st.nextToken();
+        System.out.println(id + "??!");
     }
 }
