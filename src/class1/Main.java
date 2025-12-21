@@ -10,7 +10,7 @@ public class Main {
 
         StringTokenizer st = new StringTokenizer(str);
 
-        String id = st.nextToken();
-        System.out.println(id + "??!");
+        int bYear = Integer.parseInt(st.nextToken());
+        System.out.print(bYear - 543);
     }
 }
