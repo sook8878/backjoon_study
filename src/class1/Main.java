@@ -10,7 +10,13 @@ public class Main {
 
         StringTokenizer st = new StringTokenizer(str);
 
-        int bYear = Integer.parseInt(st.nextToken());
-        System.out.print(bYear - 543);
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
+
+        System.out.println((a + b) % c);
+        System.out.println(((a % c) + (b % c)) % c);
+        System.out.println((a * b) % c);
+        System.out.println(((a % c) * (b % c)) % c);
     }
 }
