@@ -11,17 +11,13 @@ public class Main {
 
         int num1 = Integer.parseInt(st.nextToken());
 
+        boolean isLeapYear = (num1 % 4 == 0 && num1 % 100 != 0) || (num1 % 4 == 0 && num1 % 400 == 0);
+
         String result;
-        if(num1 >= 90){
-            result = "A";
-        } else if (num1 <= 89 && num1 >= 80) {
-            result = "B";
-        } else if (num1 <= 79 && num1 >= 70) {
-            result = "C";
-        } else if (num1 <= 69 && num1 >= 60){
-            result = "D";
+        if(isLeapYear){
+            result = "1";
         } else {
-            result = "F";
+            result = "0";
         }
 
         System.out.println(result);
