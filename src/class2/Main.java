@@ -9,21 +9,24 @@ public class Main {
         String str = br.readLine();
         StringTokenizer st = new StringTokenizer(str);
 
-        int h = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
+        int startH = Integer.parseInt(st.nextToken());
+        int startM = Integer.parseInt(st.nextToken());
+        int cookingM = Integer.parseInt(br.readLine());
 
-        int minusM = m - 45;
-        if(minusM < 0){
-            m = 60 + minusM;
-            h -= 1;
+        int plusM = startM + cookingM;
+
+        if(plusM >= 60){
+            int plusH = plusM / 60;
+            startH += plusH;
+            if(startH >= 24){
+                startH = startH % 24; // 24로 나눈거에서 나머지 시간이 최종시간
+            }
+
+            startM = plusM % 60;
         } else {
-            m = minusM;
+            startM += cookingM;
         }
 
-        if(h < 0){
-            h = 23;
-        }
-
-        System.out.println(h + " " + m);
+        System.out.println(startH + " " + startM);
     }
 }
