@@ -6,25 +6,24 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        String str = br.readLine();
-//        StringTokenizer st = new StringTokenizer(str);
+        String str = br.readLine();
+        StringTokenizer st = new StringTokenizer(str);
 
-//        int x = Integer.parseInt(st.nextToken());
-        int x = Integer.parseInt(br.readLine());
-//        int y = Integer.parseInt(st.nextToken());
-        int y = Integer.parseInt(br.readLine());
+        int h = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
 
-        String result;
-        if(x > 0 && y > 0){
-            result = "1";
-        } else if (x < 0 && y > 0){
-            result = "2";
-        } else if (x < 0 && y < 0) {
-            result = "3";
+        int minusM = m - 45;
+        if(minusM < 0){
+            m = 60 + minusM;
+            h -= 1;
         } else {
-            result = "4";
+            m = minusM;
         }
 
-        System.out.println(result);
+        if(h < 0){
+            h = 23;
+        }
+
+        System.out.println(h + " " + m);
     }
 }
