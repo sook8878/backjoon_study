@@ -9,24 +9,40 @@ public class Main {
         String str = br.readLine();
         StringTokenizer st = new StringTokenizer(str);
 
-        int startH = Integer.parseInt(st.nextToken());
-        int startM = Integer.parseInt(st.nextToken());
-        int cookingM = Integer.parseInt(br.readLine());
+        int diceA = Integer.parseInt(st.nextToken());
+        int diceB = Integer.parseInt(st.nextToken());
+        int diceC = Integer.parseInt(st.nextToken());
 
-        int plusM = startM + cookingM;
-
-        if(plusM >= 60){
-            int plusH = plusM / 60;
-            startH += plusH;
-            if(startH >= 24){
-                startH = startH % 24; // 24로 나눈거에서 나머지 시간이 최종시간
+        int reward;
+        // 1. 다 맞을 경우
+        if (diceA == diceB && diceA == diceC){
+            reward = 10000 + (diceA * 1000);
+        } else if (diceA == diceB || diceA == diceC || diceB == diceC) {
+            // 2개만 맞을 경우
+            // 뭐랑 맞았는지 체크
+            int checkDice;
+            if (diceA == diceB){
+                checkDice = diceA;
+            } else if (diceA == diceC) {
+                checkDice = diceA;
+            } else {
+                checkDice = diceC;
+            }
+            reward = 1000 + (checkDice * 100);
+        } else {
+            // 다 틀릴 경우
+            // 높은 거 찾기
+            int heightDice = diceA;
+            if(diceB > diceA){
+                heightDice = diceB;
+            }
+            if(diceC > heightDice){
+                heightDice = diceC;
             }
 
-            startM = plusM % 60;
-        } else {
-            startM += cookingM;
+            reward = heightDice * 100;
         }
 
-        System.out.println(startH + " " + startM);
+        System.out.println(reward);
     }
 }
