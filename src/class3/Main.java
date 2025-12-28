@@ -8,12 +8,19 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        int totalCost = Integer.parseInt(br.readLine());
+        int buyCount = Integer.parseInt(br.readLine());
 
-        int sum = 0;
-        for(int i = 0; i <= n ; i++){
-            sum += i;
+        int cost = 0;
+        for(int i = 0; i < buyCount; i++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int tempCost = Integer.parseInt(st.nextToken());
+            int tempCount = Integer.parseInt(st.nextToken());
+
+            cost += (tempCost * tempCount);
         }
-        System.out.println(sum);
+
+        String result = cost == totalCost ? "Yes" : "No";
+        System.out.println(result);
     }
 }
