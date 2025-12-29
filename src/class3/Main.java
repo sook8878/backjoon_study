@@ -9,13 +9,13 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int t = Integer.parseInt(br.readLine());
-        int a=0;
-        int b=0;
-        for(int i = 0; i<t; i++){
+        int a = 0;
+        int b = 0;
+        for(int i = 0; i < t; i++){
             StringTokenizer st = new StringTokenizer(br.readLine());
             a = Integer.parseInt(st.nextToken());
             b = Integer.parseInt(st.nextToken());
-            bw.write(a + b + "\n");
+            bw.write("Case #" + (i + 1) + ": " + (a + b) + "\n");
         }
 
         bw.close();
