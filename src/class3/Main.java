@@ -9,10 +9,15 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int t = Integer.parseInt(br.readLine());
-        for(int i = 1; i < t + 1; i++) {
+        for(int i = 0; i < t; i++) {
             String star = "";
-            for(int j = 0; j < i; j++){
-                star += "*";
+
+            for(int j = 0; j < t; j++){
+                if(j >= t-1-i){
+                    star += "*";
+                } else {
+                    star += " ";
+                }
             }
             bw.write(star+"\n");
         }
