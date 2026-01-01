@@ -6,17 +6,22 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String readLine;
-        while ((readLine = br.readLine()) != null){
-            if(readLine == null || readLine.isEmpty()){
-                return;
+        int t = Integer.parseInt(br.readLine());
+
+        String numbers = br.readLine();
+        StringTokenizer st = new StringTokenizer(numbers);
+
+        int v = Integer.parseInt(br.readLine());
+        int count = 0;
+        for(int i = 0; i < t; i ++){
+            int number = Integer.parseInt(st.nextToken());
+            if(number == v){
+                count += 1;
             }
-            StringTokenizer st = new StringTokenizer(readLine);
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-
-            System.out.println(a+b);
         }
+        bw.write(count + "");
+        bw.close();
     }
 }
