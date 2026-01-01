@@ -9,15 +9,14 @@ public class Main {
 
         String readLine;
         while ((readLine = br.readLine()) != null){
+            if(readLine == null || readLine.isEmpty()){
+                return;
+            }
             StringTokenizer st = new StringTokenizer(readLine);
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
 
-            if(a == 0 && b == 0){
-                return;
-            } else {
-                System.out.println(a+b);
-            }
+            System.out.println(a+b);
         }
     }
 }
