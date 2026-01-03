@@ -1,30 +1,35 @@
 package class3;
 
 import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = Integer.parseInt(br.readLine());
+        StringTokenizer firstLine = new StringTokenizer(br.readLine());
+        int buckets = Integer.parseInt(firstLine.nextToken());
+        int throwCount = Integer.parseInt(firstLine.nextToken());
 
-        String[] numbers = br.readLine().split(" ");
-        int min = 0;
-        int max = 0;
-        for(int i = 0; i < n; i ++){
-            int number = Integer.parseInt(numbers[i]);
+        int[] buketStatus = new int[buckets];
+        for(int i = 0; i < throwCount; i++){
+            StringTokenizer line = new StringTokenizer(br.readLine());
+            int startBuketNum = Integer.parseInt(line.nextToken());
+            int secBucketNum = Integer.parseInt(line.nextToken());
+            int ballNum = Integer.parseInt(line.nextToken());
 
-            if(min >= number || min == 0){
-                min = number;
-            }
-
-            if(max <= number || max == 0){
-                max = number;
+            int loopCnt = secBucketNum - startBuketNum + 1; //3
+            for(int j = 0; j < loopCnt; j++){
+                int changeIndex = (startBuketNum + j) - 1;
+                buketStatus[changeIndex] = ballNum;
             }
         }
 
-        bw.write(min + " " + max);
+        for(int i = 0; i < buketStatus.length; i ++){
+            System.out.print(buketStatus[i] + " ");
+        }
+
         bw.close();
     }
 }
