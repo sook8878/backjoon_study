@@ -1,23 +1,27 @@
 package class3;
 
 import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s = br.readLine();
+        int t = Integer.parseInt(br.readLine());
 
-        String[] alphabets = new String[26];
-        int index = 0;
-        for (int i = 97; i < 123; i++){
-            char alphabet = (char) i;
-            alphabets[index] = String.valueOf(alphabet);
-            index++;
+        for(int i = 0; i < t; i ++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int r = Integer.parseInt(st.nextToken());
+            String str = st.nextToken();
+
+            String result = "";
+            for(int k = 0; k < str.length(); k ++){
+                String ch = str.substring(k, k+1);
+                for (int j = 0; j < r; j ++){
+                    result = result + ch;
+                }
+            }
+            System.out.println(result);
         }
 
-        for(int i = 0; i < alphabets.length; i++){
-            String alphabet = alphabets[i];
-            System.out.print(s.indexOf(alphabet) + " ");
-        }
     }
 }
