@@ -5,15 +5,19 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine());
+        String s = br.readLine();
 
-        String nums = br.readLine();
-        int sum = 0;
-        for(int i = 0; i < nums.length(); i++){
-            String numStr = String.valueOf(nums.charAt(i));
-            sum += Integer.parseInt(numStr);
+        String[] alphabets = new String[26];
+        int index = 0;
+        for (int i = 97; i < 123; i++){
+            char alphabet = (char) i;
+            alphabets[index] = String.valueOf(alphabet);
+            index++;
         }
 
-        System.out.println(sum);
+        for(int i = 0; i < alphabets.length; i++){
+            String alphabet = alphabets[i];
+            System.out.print(s.indexOf(alphabet) + " ");
+        }
     }
 }
