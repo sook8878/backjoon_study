@@ -1,49 +1,50 @@
 package class3;
 
 import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine());
 
-        int notDuplicateWordCnt = 0;
-        for(int i = 0; i < t; i++){
-            String word = br.readLine();
+        double finalRating = 0;
+        double creditSum = 0;
+        int notPMajorCnt = 0;
+        for(int i = 0; i < 20; i ++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
 
-            String[] wordArray = word.split("");
+            String major = st.nextToken();
+            double rating = Double.parseDouble(st.nextToken());
+            String grade = st.nextToken();
 
-            boolean check = false;
-            for(int j = 0; j < wordArray.length; j++){
-                check = false;
-                String currentWord = wordArray[j];
-
-                // 1. currentWord의 갯수 알아내기
-                String replaceWord = word.replaceAll(currentWord, "");
-                int currentWordCnt = word.length() - replaceWord.length();
-
-                // 2. 마지막인덱스 - 퍼스트 인덱스 != currentWord의 갯수가 아닌 알파벳이 있으면 브레이크
-                int wordFirstIndex = word.indexOf(currentWord);
-                int wordLastIndex = word.lastIndexOf(currentWord);
-
-                if(wordLastIndex - wordFirstIndex == 0){
-                    check = true;
-                } else if(wordLastIndex - wordFirstIndex == (currentWordCnt - 1)){
-                    check = true;
-                }
-
-                if(!check){
-                    break;
-                }
-            }
-
-            if(!check){
+            if(grade.equals("P")){
                 continue;
             }
-            notDuplicateWordCnt += 1;
+
+            double credit = 0;
+            if(grade.contains("A")){
+                credit = 4;
+            } else if (grade.contains("B")) {
+                credit = 3;
+            } else if (grade.contains("C")) {
+                credit = 2;
+            } else if (grade.contains("D")) {
+                credit = 1;
+            }
+
+            if(grade.contains("+")){
+                credit += 0.5;
+            }
+
+            creditSum += (rating * credit);
+            finalRating += rating;
+            notPMajorCnt += 1;
         }
 
-        System.out.println(notDuplicateWordCnt);
-
+        if(creditSum == 0 || finalRating == 0){
+            System.out.println(0);
+        } else {
+            System.out.println(creditSum / finalRating);
+        }
     }
 }
