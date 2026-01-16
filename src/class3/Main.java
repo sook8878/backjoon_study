@@ -7,29 +7,23 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer firstLine = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(firstLine.nextToken());
-        int m = Integer.parseInt(firstLine.nextToken());
-
-        int[][] matrix = new int[n][m];
-        for(int i = 0; i < (n * 2); i ++){
+        int[][] matrix = new int[9][9];
+        int maxNum = 0;
+        int row = 0;
+        int column = 0;
+        for(int i = 0; i < matrix.length; i++){
             StringTokenizer line = new StringTokenizer(br.readLine());
-            int index = i;
-            if(index >= n){
-                index = i - n;
-            }
 
-            for(int j = 0; j < m; j++){
+            for(int j = 0; j < matrix[i].length; j++){
                 int num = Integer.parseInt(line.nextToken());
-                matrix[index][j] += num;
+                if(maxNum <= num){
+                    maxNum = num;
+                    row = i+1;
+                    column = j+1;
+                }
             }
         }
-
-        for(int[] array : matrix){
-            for(int num : array){
-                System.out.print(num + " ");
-            }
-            System.out.println();
-        }
+        System.out.println(maxNum);
+        System.out.println(row + " " + column);
     }
 }
