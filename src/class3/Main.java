@@ -7,44 +7,29 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        double finalRating = 0;
-        double creditSum = 0;
-        int notPMajorCnt = 0;
-        for(int i = 0; i < 20; i ++){
-            StringTokenizer st = new StringTokenizer(br.readLine());
+        StringTokenizer firstLine = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(firstLine.nextToken());
+        int m = Integer.parseInt(firstLine.nextToken());
 
-            String major = st.nextToken();
-            double rating = Double.parseDouble(st.nextToken());
-            String grade = st.nextToken();
-
-            if(grade.equals("P")){
-                continue;
+        int[][] matrix = new int[n][m];
+        for(int i = 0; i < (n * 2); i ++){
+            StringTokenizer line = new StringTokenizer(br.readLine());
+            int index = i;
+            if(index >= n){
+                index = i - n;
             }
 
-            double credit = 0;
-            if(grade.contains("A")){
-                credit = 4;
-            } else if (grade.contains("B")) {
-                credit = 3;
-            } else if (grade.contains("C")) {
-                credit = 2;
-            } else if (grade.contains("D")) {
-                credit = 1;
+            for(int j = 0; j < m; j++){
+                int num = Integer.parseInt(line.nextToken());
+                matrix[index][j] += num;
             }
-
-            if(grade.contains("+")){
-                credit += 0.5;
-            }
-
-            creditSum += (rating * credit);
-            finalRating += rating;
-            notPMajorCnt += 1;
         }
 
-        if(creditSum == 0 || finalRating == 0){
-            System.out.println(0);
-        } else {
-            System.out.println(creditSum / finalRating);
+        for(int[] array : matrix){
+            for(int num : array){
+                System.out.print(num + " ");
+            }
+            System.out.println();
         }
     }
 }
