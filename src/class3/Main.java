@@ -7,21 +7,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        String word = st.nextToken();
+        long num = Long.parseLong(st.nextToken());
         int nBase = Integer.parseInt(st.nextToken());
 
-        long result = 0;
-        int index = 0;
-        for (int i = word.length()-1; i >= 0; i--) {
-            int num;
-            if (word.charAt(i) >= 65){
-                num = word.charAt(i) - 55;
+        String result = "";
+        while (num > 0){
+            int modWord = (int) (num % nBase);
+            if(modWord > 9){
+                char c = (char) (modWord + 55);
+                result = (c + result);
             } else {
-                num = word.charAt(i) - 48;
+                result = (modWord + result);
             }
-
-            long baseResult = (long) Math.pow(nBase, index++);
-            result += ((long) num * baseResult);
+            num = (num / nBase);
         }
         System.out.println(result);
     }
