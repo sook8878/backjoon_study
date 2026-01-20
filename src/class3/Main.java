@@ -5,9 +5,23 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        long n = Integer.parseInt(br.readLine());
+        if(n == 1){
+            System.out.println(1);
+            return;
+        }
 
-        long pow = (long) Math.pow(2, n) + 1;
-        System.out.println(pow * pow);
+        long check = 0;
+        long count = 0;
+        for(long i = 6; i > 0; i = (i+6)){
+            check += (i);
+
+            if((n - check) <= 1){
+                break;
+            }
+
+            count ++;
+        }
+        System.out.println((count+2));
     }
 }
