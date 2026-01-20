@@ -5,23 +5,26 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        long n = Integer.parseInt(br.readLine());
-        if(n == 1){
-            System.out.println(1);
-            return;
+        int n = Integer.parseInt(br.readLine());
+
+        int line = n;
+
+        int numerator; // 분자
+        int denominator; // 분모
+        for(int i = 1; n > 0; i++){
+            n = (n - i);
+            line = i;
         }
 
-        long check = 0;
-        long count = 0;
-        for(long i = 6; i > 0; i = (i+6)){
-            check += (i);
-
-            if((n - check) <= 1){
-                break;
-            }
-
-            count ++;
+        // 짝수 일 때
+        if(line % 2 == 0){
+            numerator = line + n;
+            denominator = (line + 1) - numerator;
+        } else {
+            denominator = line + n;
+            numerator = (line + 1) - denominator;
         }
-        System.out.println((count+2));
+
+        System.out.println(numerator + "/" + denominator);
     }
 }
