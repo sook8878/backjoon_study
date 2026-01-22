@@ -16,7 +16,7 @@ public class Main {
                 return;
             }
             boolean factor = (b % a == 0);
-            boolean multiple = ((a / b) % 1 == 0);
+            boolean multiple = ((a / b) % 1 == 0); // a % b == 0 이 정답
             if(factor){
                 System.out.println("factor");
 
