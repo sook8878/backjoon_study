@@ -1,30 +1,20 @@
 package class3;
 
 import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        StringTokenizer line = new StringTokenizer(br.readLine());
+        long a = Integer.parseInt(line.nextToken());
+        long b = Integer.parseInt(line.nextToken());
+        long v = Integer.parseInt(line.nextToken());
 
-        int line = n;
-
-        int numerator; // 분자
-        int denominator; // 분모
-        for(int i = 1; n > 0; i++){
-            n = (n - i);
-            line = i;
+        long result = ((v - a) / (a - b)) + 1;
+        if((v - a)%(a - b) > 0){
+            result += 1;
         }
-
-        // 짝수 일 때
-        if(line % 2 == 0){
-            numerator = line + n;
-            denominator = (line + 1) - numerator;
-        } else {
-            denominator = line + n;
-            numerator = (line + 1) - denominator;
-        }
-
-        System.out.println(numerator + "/" + denominator);
+        System.out.println(result);
     }
 }
