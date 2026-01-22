@@ -1,29 +1,47 @@
 package class3;
 
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken());
-        int k = Integer.parseInt(st.nextToken());
-
-        int[] nums = new int[n];
-        int index = 0;
-        for (int i = 1; i <= n; i++) {
-            if(n % i == 0){
-                nums[index] = i;
-                index ++;
+        String line;
+        while ((line = br.readLine()) != null) {
+            int n = Integer.parseInt(line);
+            if (n == -1) {
+                return;
             }
-        }
 
-        if(nums.length < k || (n <= 0 || k <= 0)){
-            System.out.println(0);
-        } else {
-            System.out.println(nums[k-1]);
+            int index = 0;
+            int[] factors = new int[n];
+            for (int i = 1; i < n; i++) {
+                if (n % i == 0) {
+                    factors[index] = i;
+                    index++;
+                }
+            }
+
+            String result = n + " = ";
+            int sum = 0;
+            for (int i = 0; i < factors[i]; i++) {
+
+                int factor = factors[i];
+                if (factor == 0) {
+                    break;
+                }
+                sum += factor;
+                if (i == 0) {
+                    result += "" + factor;
+                } else
+                    result += " + " + factor;
+            }
+
+            if (sum == n) {
+                System.out.println(result);
+            } else {
+                System.out.println(n + " is NOT perfect.");
+            }
         }
     }
 }
