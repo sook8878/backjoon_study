@@ -6,15 +6,26 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer line = new StringTokenizer(br.readLine());
-        long a = Integer.parseInt(line.nextToken());
-        long b = Integer.parseInt(line.nextToken());
-        long v = Integer.parseInt(line.nextToken());
 
-        long result = ((v - a) / (a - b)) + 1;
-        if((v - a)%(a - b) > 0){
-            result += 1;
+        String line;
+        while ((line = br.readLine()) != null){
+            StringTokenizer st = new StringTokenizer(line);
+            double a = Integer.parseInt(st.nextToken());
+            double b = Integer.parseInt(st.nextToken());
+            if(a == 0 || b == 0){
+                return;
+            }
+            boolean factor = (b % a == 0);
+            boolean multiple = ((a / b) % 1 == 0);
+            if(factor){
+                System.out.println("factor");
+
+            } else if (multiple) {
+                System.out.println("multiple");
+
+            } else {
+                System.out.println("neither");
+            }
         }
-        System.out.println(result);
     }
 }
