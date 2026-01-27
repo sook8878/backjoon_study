@@ -6,40 +6,23 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int m = Integer.parseInt(br.readLine());
         int n = Integer.parseInt(br.readLine());
 
-        int sum = 0;
-        int minPrime = 0;
-        boolean check = false;
-        for (int i = m; i <= n; i++) {
-            // 1은 소수 아님
-            if(i == 1){
-                continue;
-            }
+        // 1은 소수 아님
+        String nStrTemp = "";
+        for (int i = 2; i <= n; i++) {
 
-            boolean isPrime = true;
-            for (int j = 2; j < i; j++) {
-                if(i % j == 0){
-                    isPrime = false;
-                    break;
-                }
-            }
+            if (n % i == 0) {
+                n = (n / i);
+                nStrTemp += " " + i;
 
-            if(isPrime){
-                sum += i;
-                if(!check){
-                    minPrime = i;
-                    check = true;
-                }
+                i = 1;
             }
         }
 
-        if(sum == 0){
-            System.out.println(-1);
-        } else {
-            System.out.println(sum);
-            System.out.println(minPrime);
+        String[] nStrArray = nStrTemp.trim().split(" ");
+        for(String nStr : nStrArray){
+            System.out.println(nStr);
         }
     }
 }
