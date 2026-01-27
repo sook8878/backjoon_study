@@ -7,36 +7,37 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer line1 = new StringTokenizer(br.readLine());
-        StringTokenizer line2 = new StringTokenizer(br.readLine());
-        StringTokenizer line3 = new StringTokenizer(br.readLine());
-        int p1_x = Integer.parseInt(line1.nextToken());
-        int p1_y = Integer.parseInt(line1.nextToken());
-
-        int p2_x = Integer.parseInt(line2.nextToken());
-        int p2_y = Integer.parseInt(line2.nextToken());
-
-        int p3_x = Integer.parseInt(line3.nextToken());
-        int p3_y = Integer.parseInt(line3.nextToken());
-
-        int x = 0;
-        if(p1_x == p2_x){
-            x = p3_x;
-        } else if (p2_x == p3_x) {
-            x = p1_x;
-        } else if (p1_x == p3_x) {
-            x = p2_x;
+        int n = Integer.parseInt(br.readLine());
+        if(n < 2){
+            System.out.println(0);
+            return;
         }
 
-        int y = 0;
-        if(p1_y == p2_y){
-            y = p3_y;
-        } else if (p2_y == p3_y) {
-            y = p1_y;
-        } else if (p1_y == p3_y) {
-            y = p2_y;
+        int minX = 0;
+        int maxX = 0;
+        int minY = 0;
+        int maxY = 0;
+        for (int i = 0; i < n; i++) {
+            StringTokenizer line = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(line.nextToken());
+            int y = Integer.parseInt(line.nextToken());
+
+            if(minX > x || minX == 0){
+                minX = x;
+            }
+            if(maxX < x || maxX == 0){
+                maxX = x;
+            }
+
+            if(minY > y || minY == 0){
+                minY = y;
+            }
+            if(maxY < y || maxY == 0){
+                maxY = y;
+            }
         }
 
-        System.out.println(x + " " + y);
+        int extent = ((maxX - minX) * (maxY - minY));
+        System.out.println(extent);
     }
 }
