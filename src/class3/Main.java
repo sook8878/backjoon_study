@@ -1,24 +1,36 @@
 package class3;
 
 import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int a = Integer.parseInt(br.readLine());
-        int b = Integer.parseInt(br.readLine());
-        int c = Integer.parseInt(br.readLine());
+        String line;
+        while ((line = br.readLine()) != null) {
+            StringTokenizer st = new StringTokenizer(line);
 
-        boolean equilateral = (a + b + c == 180);
-        if(!equilateral){
-            System.out.println("Error");
-        } else if(equilateral && (a == 60 && b == 60 && c == 60)){
-            System.out.println("Equilateral");
-        } else if (equilateral && (a == b || a == c || b == c)) {
-            System.out.println("Isosceles");
-        } else {
-            System.out.println("Scalene");
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            int c = Integer.parseInt(st.nextToken());
+            if(a == 0){
+                return;
+            }
+
+            int sideSum = a+b+c;
+            if((sideSum - a) <= a || (sideSum - b) <= b || (sideSum - c) <= c){
+                System.out.println("Invalid");
+                continue;
+            }
+
+            if (a == b && a == c) {
+                System.out.println("Equilateral");
+            } else if ((a == b || a == c || b == c)) {
+                System.out.println("Isosceles");
+            } else if (a != b && a != c && b != c) {
+                System.out.println("Scalene");
+            }
         }
     }
 }
