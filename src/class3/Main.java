@@ -7,30 +7,20 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String line;
-        while ((line = br.readLine()) != null) {
-            StringTokenizer st = new StringTokenizer(line);
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
 
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            int c = Integer.parseInt(st.nextToken());
-            if(a == 0){
-                return;
-            }
-
-            int sideSum = a+b+c;
-            if((sideSum - a) <= a || (sideSum - b) <= b || (sideSum - c) <= c){
-                System.out.println("Invalid");
-                continue;
-            }
-
-            if (a == b && a == c) {
-                System.out.println("Equilateral");
-            } else if ((a == b || a == c || b == c)) {
-                System.out.println("Isosceles");
-            } else if (a != b && a != c && b != c) {
-                System.out.println("Scalene");
-            }
+        int sideSum = a+b+c;
+        if ((sideSum - a) <= a) {
+            a = b + c - 1;
+        } else if ((sideSum - b) <= b) {
+            b = a + c - 1;
+        } else if ((sideSum - c) <= c){
+            c = a + b - 1;
         }
+
+        System.out.println(a + b + c);
     }
 }
