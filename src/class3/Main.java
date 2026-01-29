@@ -6,7 +6,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println(br.readLine());
-        System.out.println(1);
+        int n = Integer.parseInt(br.readLine());
+        double pow = Math.pow(n,2);
+        System.out.println((long) pow);
+        System.out.println(2);
     }
 }
