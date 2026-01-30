@@ -7,7 +7,8 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(br.readLine());
-        System.out.println((long) n * n * n);
+        long result = ((long) n * ((long) (n - 1) * (n - 2))) / 6;
+        System.out.println(result);
         System.out.println(3);
     }
 }
