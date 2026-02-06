@@ -7,23 +7,43 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int a1 = Integer.parseInt(st.nextToken());
-        int a0 = Integer.parseInt(st.nextToken());
+        StringTokenizer line1 = new StringTokenizer(br.readLine());
+        int cardAmount = Integer.parseInt(line1.nextToken());
+        int targetScore = Integer.parseInt(line1.nextToken());
 
-        int c = Integer.parseInt(br.readLine());
-        int n0 = Integer.parseInt(br.readLine());
-
-        // f(n) 은 a1n + a0
-        // (a1n + a0) <= c * n0
-        // 7n+7
-        int x = (a1 * n0) + a0;
-        int y = c * n0;
-//        System.out.println("X : "+ x + ", Y : " + y);
-        if(x <= y && a1 <= c){
-            System.out.println(1);
-        } else {
-            System.out.println(0);
+        StringTokenizer line2 = new StringTokenizer(br.readLine());
+        int[] cards = new int[cardAmount];
+        for(int i = 0; i < cards.length; i++){
+            cards[i] = Integer.parseInt(line2.nextToken());
         }
+
+        int result = 0;
+        for(int i = 0; i < cards.length; i++){
+            int card1 = cards[i];
+
+            for (int j = 0; j < cards.length; j++) {
+                int card2 = cards[j];
+                if(j == i){
+                    continue;
+                }
+
+                for (int k = 0; k < cards.length; k++) {
+                    if(k == i || k == j){
+                        continue;
+                    }
+                    int card3 = cards[k];
+
+                    int sumCardScore = card1 + card2 + card3;
+                    if(sumCardScore == targetScore){
+                        System.out.println(sumCardScore);
+                        return;
+                    } else if(sumCardScore <= targetScore && (sumCardScore > result)){
+                        result = sumCardScore;
+                    }
+                }
+            }
+        }
+
+        System.out.println(result);
     }
 }
